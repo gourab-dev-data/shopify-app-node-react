@@ -1,0 +1,29 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "3a7de3b2f709a2aa2b15a59854358dcc"
+name = "alltest"
+handle = "alltest"
+application_url = "https://duo-dressing-standings-movers.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "plusapptest.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_orders,read_products,write_products"
+
+[auth]
+redirect_urls = [
+  "https://duo-dressing-standings-movers.trycloudflare.com/auth/callback",
+  "https://duo-dressing-standings-movers.trycloudflare.com/auth/shopify/callback",
+  "https://duo-dressing-standings-movers.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+[pos]
+embedded = false
