@@ -20,7 +20,7 @@ export function TopBar() {
 
         const response = await request.json();
         setStoreName(response.shop.name);
-        console.log(response.shop.name);
+        //console.log(response);
       } catch (error) {
         console.error('Error fetching store info:', error);
       }

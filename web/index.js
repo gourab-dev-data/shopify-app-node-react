@@ -60,6 +60,87 @@ app.get("/api/store/info", async (_req, res) => {
   res.status(200).send({ shop: shopinfo.body.data.shop });
 })
 
+// Get total orders
+app.get("/api/order/count", async (_req, res) => {
+  const client = new shopify.api.clients.Graphql({
+    session: res.locals.shopify.session,
+  });
+
+  const countData = await client.request(`
+    query {
+      ordersCount {
+        count
+      }
+    }
+  `);
+
+  res.status(200).send({ count: countData.data.ordersCount.count });
+});
+
+// Get pending orders
+app.get("/api/pendingorder/count", async (_req, res) => {
+  const client = new shopify.api.clients.Graphql({
+    session: res.locals.shopify.session,
+  });
+
+  const countData = await client.request(`
+    query {
+      pendingOrdersCount {
+        count
+      }
+    }
+  `);
+
+  res.status(200).send({ count: countData.data.pendingOrdersCount.count });
+});
+
+// Get total sale
+/*app.get("/api/total/sale", async (_req, res) => {
+  const client = new shopify.api.clients.Graphql({
+    session: res.locals.shopify.session,
+  });
+  const GET_ORDERS = gql`
+    query getOrders($first: Int!, $after: String) {
+      orders(first: $first, after: $after, query: "financial_status:paid") {
+        edges {
+          node {
+            id
+            totalPrice
+          }
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+  `;
+  async function getTotalSales() {
+    let totalSales = 0;
+    let hasNextPage = true;
+    let cursor = null;
+
+    while (hasNextPage) {
+        const variables = { first: 250, after: cursor }; // Adjust the limit as needed
+        const response = await client.request(GET_ORDERS, variables);
+        
+        response.orders.edges.forEach(edge => {
+            totalSales += parseFloat(edge.node.totalPrice);
+        });
+
+        hasNextPage = response.orders.pageInfo.hasNextPage;
+        cursor = response.orders.pageInfo.endCursor;
+    }
+
+    console.log(`Total Sales Amount: $${totalSales.toFixed(2)}`);
+    res.status(200).send({ sale: `${totalSales.toFixed(2)}` });
+  }
+
+  getTotalSales().catch(error => {
+      console.error('Error fetching orders:', error);
+  });
+});*/
+
 // Get total collections
 app.get("/api/collections/count", async (_req, res) => {
   const client = new shopify.api.clients.Graphql({

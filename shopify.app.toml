@@ -3,7 +3,7 @@
 client_id = "3a7de3b2f709a2aa2b15a59854358dcc"
 name = "alltest"
 handle = "alltest"
-application_url = "https://duo-dressing-standings-movers.trycloudflare.com"
+application_url = "https://ave-accomplish-distributions-harvey.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_orders,read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://duo-dressing-standings-movers.trycloudflare.com/auth/callback",
-  "https://duo-dressing-standings-movers.trycloudflare.com/auth/shopify/callback",
-  "https://duo-dressing-standings-movers.trycloudflare.com/api/auth/callback"
+  "https://ave-accomplish-distributions-harvey.trycloudflare.com/auth/callback",
+  "https://ave-accomplish-distributions-harvey.trycloudflare.com/auth/shopify/callback",
+  "https://ave-accomplish-distributions-harvey.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
